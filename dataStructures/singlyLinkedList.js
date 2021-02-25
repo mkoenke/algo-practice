@@ -72,5 +72,58 @@ class SinglyLinkedList {
   }
   get(index) {
     if (index < 0 || index >= this.length) return null
+    let counter = 0
+    let current = this.head
+    while (counter !== index) {
+      current = current.next
+      counter++
+    }
+    return current
+    // let current = this.head
+    // for (let i = 0; i < this.length; i++) {
+    //   current = current.next
+    //   if (i === index) {
+    //     return current
+    //   }
+    // }
+  }
+  set(index, value) {
+    let target = this.get(index)
+    if (target) {
+      target.val = value
+      return true
+    }
+    return false
+  }
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false
+    if (index === 0) {
+      return !!this.unshift(value)
+    }
+    if (index === this.length) {
+      return !!this.push(value)
+    }
+    let newNode = new Node(value)
+    let prev = this.get(index - 1)
+    let temp = prev.next
+    prev.next = newNode
+    newNode.next = temp
+    this.length++
+    return true
+  }
+  remove(index) {
+    if (index >= this.length || index < 0) return undefined
+    if (index === this.length - 1) {
+      return this.pop()
+    }
+    if (index === 0) {
+      return this.shift()
+    }
+
+    let prev = this.get(index - 1)
+    let removed = prev.next
+    prev.next = removed.next
+    this.length--
+    return removed
   }
 }
