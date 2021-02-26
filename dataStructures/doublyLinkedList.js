@@ -119,7 +119,7 @@ class DoublyLinkedList {
     let beforeNode = removedNode.prev
     let afterNode = removedNode.next
     beforeNode.next = afterNode
-    afterNode.prev = beforeNode
+    afterNode.prev = before
     removedNode.next = null
     removedNode.prev = null
     this.length--
