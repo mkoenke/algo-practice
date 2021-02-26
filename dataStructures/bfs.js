@@ -54,35 +54,64 @@ class BinarySearchTree {
       }
     }
   }
-  //   find(value){
-  //     if(this.root === null) return false;
-  //     var current = this.root,
-  //         found = false;
-  //     while(current && !found){
-  //         if(value < current.value){
-  //             current = current.left;
-  //         } else if(value > current.value){
-  //             current = current.right;
-  //         } else {
-  //             found = true;
-  //         }
-  //     }
-  //     if(!found) return undefined;
-  //     return current;
-  // }
-  // contains(value){
-  //     if(this.root === null) return false;
-  //     var current = this.root,
-  //         found = false;
-  //     while(current && !found){
-  //         if(value < current.value){
-  //             current = current.left;
-  //         } else if(value > current.value){
-  //             current = current.right;
-  //         } else {
-  //             return true;
-  //         }
-  //     }
-  //     return false;
-  // }
+
+  BFS() {
+    // using bst code but works on any tree
+    let data = []
+    let queue = []
+    let node = this.root
+    queue.push(this.root)
+    while (queue.length) {
+      node = queue.shift()
+      data.push(node.value)
+      if (node.left) queue.push(node.left)
+      if (node.right) queue.push(node.right)
+    }
+    return data
+  }
+  DFSPreOrder() {
+    let data = []
+    let current = this.root
+    function traverse(node) {
+      data.push(node.value)
+      if (node.left) {
+        traverse(node.left)
+      }
+      if (node.right) {
+        traverse(node.right)
+      }
+    }
+    traverse(current)
+    return data
+  }
+  DFSPostOrder() {
+    let data = []
+    let current = this.root
+    function traverse(node) {
+      if (node.left) {
+        traverse(node.left)
+      }
+      if (node.right) {
+        traverse(node.right)
+      }
+      data.push(node.value)
+    }
+    traverse(current)
+    return data
+  }
+  DFSInOrder() {
+    let data = []
+    let current = this.root
+    function traverse(node) {
+      if (node.left) {
+        traverse(node.left)
+      }
+      data.push(node.value)
+      if (node.right) {
+        traverse(node.right)
+      }
+    }
+    traverse(current)
+    return data
+  }
 }
