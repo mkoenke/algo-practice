@@ -66,26 +66,57 @@ class DoublyLinkedList {
     this.length++
     return this
   }
+  // get(index) {
+  //   if (index < 0 || index >= this.length) return null
+  //   if (index <= this.length / 2) {
+  //     let count = 0
+  //     let current = this.head
+  //     while (count !== index) {
+  //       current = current.next
+  //       count++
+  //     }
+  //     return current
+  //   } else {
+  //     let count = this.length - 1
+  //     let current = this.tail
+  //     while (count !== index) {
+  //       current = current.prev
+  //       count--
+  //     }
+  //     return current
+  //   }
+  // }
   get(index) {
-    if (index < 0 || index >= this.length) return null
-    if (index <= this.length / 2) {
-      let count = 0
+    if (index < 0 || index > this.length - 1) return null
+    if (index < this.length / 2) {
       let current = this.head
-      while (count !== index) {
+      // let count = 0
+      // while (count !==index){
+      //   current = current.next
+      //   count++
+      // }
+      // return current
+      for (let i = 0; i < index; i++) {
         current = current.next
-        count++
+        return current
       }
-      return current
     } else {
-      let count = this.length - 1
       let current = this.tail
-      while (count !== index) {
+      for (let i = this.length - 1; i >= index; i--) {
         current = current.prev
-        count--
+        return current
       }
-      return current
+      // } else {
+      //   let count = this.length -1
+      //   let current = this.tail
+      //   while(count !== index){
+      //     current = current.prev
+      //     count --
+      //   }
+      //   return current
     }
   }
+
   set(index, value) {
     let foundNode = this.get(index)
     if (!foundNode) {
