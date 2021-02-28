@@ -90,30 +90,20 @@ class DoublyLinkedList {
     if (index < 0 || index > this.length - 1) return null
     if (index < this.length / 2) {
       let current = this.head
-      // let count = 0
-      // while (count !==index){
-      //   current = current.next
-      //   count++
-      // }
-      // return current
-      for (let i = 0; i < index; i++) {
+      let count = 0
+      while (count !== index) {
         current = current.next
-        return current
+        count++
       }
+      return current
     } else {
+      let count = this.length - 1
       let current = this.tail
-      for (let i = this.length - 1; i >= index; i--) {
+      while (count !== index) {
         current = current.prev
-        return current
+        count--
       }
-      // } else {
-      //   let count = this.length -1
-      //   let current = this.tail
-      //   while(count !== index){
-      //     current = current.prev
-      //     count --
-      //   }
-      //   return current
+      return current
     }
   }
 
@@ -130,7 +120,7 @@ class DoublyLinkedList {
     if (index < 0 || index >= this.length) return false
     if (index === 0) return !!this.unshift(value)
     if (index === this.length) return !!this.push(value)
-    let newNode = newNode(value)
+    let newNode = new Node(value)
     let beforeNode = this.get(index - 1)
     let afterNode = beforeNode.next
     beforeNode.next = newNode
