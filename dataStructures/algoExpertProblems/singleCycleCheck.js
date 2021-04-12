@@ -1,17 +1,21 @@
 function hasSingleCycle(array) {
-  // Write your code here.
   let numVisited = 0
-  let currentIdx = 0
+  let currentIndex = 0
+
   while (numVisited < array.length) {
-    if (numVisited > 0 && currentIdx === 0) return false
+    if (numVisited > 0 && currentIndex === 0) return false
     numVisited++
-    currentIdx = getNext(currentIdx, array)
+    currentIndex = findNextIndex(currentIndex, array)
   }
-  return currentIdx === 0
+  return currentIndex === 0
 }
 
-function getNext(currentIdx, array) {
-  const jump = array[currentIdx]
-  const nextIdx = (currentIdx + jump) % array.length
-  return nextIdx >= 0 ? nextIdx : nextIdx + array.length
+function findNextIndex(currentIndex, array) {
+  const leap = array[currentIndex]
+  const nextIndex = (currentIndex + leap) % array.length
+  if (nextIndex >= 0) {
+    return nextIndex
+  } else {
+    return nextIndex + array.length
+  }
 }
