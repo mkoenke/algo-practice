@@ -25,7 +25,6 @@ function recursiveMnemonicFinder(i, phoneNumber, currentCombo, allMnemonics) {
   } else {
     const digit = phoneNumber[i]
     const lettersArray = digitLetterHash[digit]
-
     for (let j = 0; j < lettersArray.length; j++) {
       const letter = lettersArray[j]
       currentCombo[i] = letter

@@ -5,3 +5,7 @@ function nthFib(n) {
   }
   return fibArray[n - 1]
 }
+
+function nthFib(n){
+  const fibArray = [1, 1]
+}
